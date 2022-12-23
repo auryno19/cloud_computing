@@ -24,7 +24,7 @@ use App\Http\Controllers\DashbordSellerController;
 use App\Http\Controllers\SellerCategoryController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardCategoryController;
-
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +36,10 @@ use App\Http\Controllers\DashboardCategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/migration', function () {
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+});
 
 Route::get('/', [IndexController::class, 'index']);
 

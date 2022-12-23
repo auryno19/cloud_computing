@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "unique-grid-372212",
+  "private_key_id": "60eb7d6e28cbb526de687cadcb73b04eb2cf4417",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDULVxti6Qe6V75\nzXVquonV2aNJVvTTKp7aYjv77VSLLDSR03NmStdQqrTBCfyoQiJA4b9r1mtOuNJR\nP4uTIkwiLlR9V87xaVLSelp2lrqVnhddN0AzFn1rwuCv4OYEm7TYmUF6MiO+Ow84\nhvaGStaG/jdxiQ30AHD/bcReXSh/AikOPvIUuGBK5l1XV7cu7wEL0KrrQrHs/cwd\niz26SDnYFwmghdK7q5I94c841dJkaoGC5rjOxvlnbulQKu66C5fk1ej2HDgPhCb1\nsNDeoeYM6OJZnK0z+GbT+hWbbSOU+hxUgV1QTFjCqbARgt4xMZu1a8MRZpzPpyoP\nhXhlV4M9AgMBAAECggEAAjYoByytvPRYXPv/9AK8vagwLdGeHKnBkFIpmn8g4sOt\nSpkGVDPsgAOl5BGbR6x+ZRtVRPKUf/R1alf76vOWqpAkD+hl5YATcNLKQmX6Zn8I\ncrX8N9KAsF2Oicn4BWbgFC/iWrubqF4L0xGCqU5HY46e++wRsENLtwXcYAVr9VYg\neCslvz/66YbSJEQNfsCdY7Dh3ByWeTqI3lMbYDO0GW25+bQFj3bP9UT/YPVR6YIX\npqqCWgO/563eimkV8duiHD+KwHRRvzSipWHNT32iRn5TxJCWjRYFPH2tHkcZYagV\nUU0GuN1iQFGW3SeD1wAAXC1o7jVLGFnJxgSjvUxLUQKBgQDrpSSrVdo7WjsAhN+k\n6NmQXWw7+7DixtWPRpvDA58jWjIB6LJwFqCk46+l3+iqWhwb/RHX1wlGNoYDeUne\nDMDuGwPgqF/VnpeJzoDsAcgttrjSwZJyze+MDdvInq1RzoRtb3TSMvxzAb7IwsOx\nqtpjRplqg3FMp1qdvE0SCX08+QKBgQDmgUS7Jc4BmPZwdvRIPNLKsmmyzrj6M/ua\nxS5TqPOz16P4TeGtakCye+dXRbOaociL/Su0XLOS82Ip1CvFohgx1X5PgoNh+2fQ\n+eXYAtWvcc6GW+g7Mf2kDesHotZboRvv9ZjYgZih/uNXAgDfNKoh/hq/O4oEefdH\n2orAQAhdZQKBgQDULiBFkoltdgK4pexGrk/wuN5TaH9Ow2DaoOZyA5nQmE98/o1l\ndkpyDn5DaskyUu8KmKXvZrX4HfIvwI+tvGggPf0Q1itsy1+B+4qEd9pKp0Pmqdv3\nOc1fm77x90by6XS+oWRcPQKpf8HNPeo92SzJxXEwwmhLcEmczEfNXPQC6QKBgQDa\nxKVu2ZqDeaGra7q9NLz7FAmtYvW8wclyQuKNFDT34xoEeCZQaB+vRllyQv0LLbEg\n68+nBrSIK+ZmvLAuioFcCrwuyjfXrrwBYqv6L/aO5PyWGHR4eiG4qlz+ilXX8TiK\nrhW6poUuerNZyNT7AwjV6k2IYgHD7d37nDdD74IA4QKBgQCs8AO6bEUsDyfvpLqK\nYsmN9sILZB/9WWbkB2OKETJ/DLFJeVc6GZfSCPNVZCGsE8rqLCtmKfm2hy7OUjkC\nzi8G51R7GdSKS74kDAx8jvkh2/IT6/YKcJQhehvONNRl8eSAsdor09oNhDmsQ+UK\n5LBq6yPADf5RwzjQG+ljJ4RTEQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "awan-jual-beli-laptop@unique-grid-372212.iam.gserviceaccount.com",
+  "client_id": "105879886261785464631",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/awan-jual-beli-laptop%40unique-grid-372212.iam.gserviceaccount.com"
+}

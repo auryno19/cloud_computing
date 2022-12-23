@@ -8,6 +8,7 @@ use App\Models\Merk;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Google\Cloud\Storage\StorageClient;
 
 class SellerProductController extends Controller
 {
@@ -33,12 +34,12 @@ class SellerProductController extends Controller
         $category = Category::all();
         $merk = Merk::all();
         $seller = Auth::user()->seller;
-        
-       return view('dashboardSeller.product.create', [
-           'category' => $category,
-           'merk' => $merk,
-           'seller' => $seller
-       ]);
+
+        return view('dashboardSeller.product.create', [
+            'category' => $category,
+            'merk' => $merk,
+            'seller' => $seller
+        ]);
     }
 
     /**
@@ -59,15 +60,46 @@ class SellerProductController extends Controller
             'harga' => 'required|numeric',
             'stok' => 'required|numeric',
             'photo' => 'image|file|max:2048'
-            
+
         ]);
 
-        if($request->file('photo')){
-            $validatedData['photo'] = $request->file('photo')->store('product-img');
+        if ($request->file('photo')) {
+            // $validatedData['photo'] = $request->file('photo')->store('product-img');
+            $googleConfigFile = file_get_contents(config_path('key.json'));
+            $storage = new StorageClient([
+                'keyFile' => json_decode($googleConfigFile, true)
+            ]);
+            $storageBucketName = config('googlecloud.storage_bucket');
+            $bucket = $storage->bucket($storageBucketName);
+
+            //get filename with extension
+            $filenamewithextension = pathinfo($request->file('photo')->getClientOriginalName(), PATHINFO_FILENAME);
+            // $filenamewithextension = $request->file('photo')->getClientOriginalName();
+
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = $request->file('photo')->getClientOriginalExtension();
+
+            //filename to store
+            $filenametostore = $filename . '_' . uniqid() . '.' . $extension;
+
+            Storage::put('product-img/' . $filenametostore, fopen($request->file('photo'), 'r+'));
+
+            $filepath = storage_path('app/public/product-img/' . $filenametostore);
+            $validatedData['photo'] = 'product-img/' . $filenametostore;
+            $object = $bucket->upload(
+                fopen($filepath, 'r'),
+                [
+                    'predefinedAcl' => 'publicRead',
+                    // 'name' => $validatedData['photo']
+                ]
+            );
         }
-        
+
         Product::create($validatedData);
-        
+
         return redirect('/sellerProduct')->with('successAdd', 'Product baru telah ditambahkan');
     }
 
@@ -79,7 +111,7 @@ class SellerProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::with('category','merk')->where('id', $id)->first();
+        $product = Product::with('category', 'merk')->where('id', $id)->first();
         return view('dashboardSeller.product.show', ['product' => $product]);
     }
 
@@ -113,7 +145,7 @@ class SellerProductController extends Controller
             'deskripsi' => 'required',
             'harga' => 'required|numeric',
             'photo' => 'image|file|max:2048'
-            
+
         ]);
 
         $product = Product::where('id', $id)->first();
@@ -123,16 +155,16 @@ class SellerProductController extends Controller
         $product->deskripsi = $request->get('deskripsi');
         $product->harga = $request->get('harga');
 
-        if($request->file('photo')){
-            if($request->oldPhoto){
+        if ($request->file('photo')) {
+            if ($request->oldPhoto) {
                 Storage::delete($request->oldPhoto);
             }
             $product->photo = $request->file('photo')->store('product-img');
         }
-        
+
         $product->save();
 
-        return redirect('/sellerProduct')->with('success', 'Product berhasil diedit'); 
+        return redirect('/sellerProduct')->with('success', 'Product berhasil diedit');
     }
 
     /**
@@ -144,7 +176,7 @@ class SellerProductController extends Controller
     public function destroy($id)
     {
         $product = Product::where('id', $id)->first();
-        if($product->photo){
+        if ($product->photo) {
             Storage::delete($product->photo);
         }
         $product->delete();

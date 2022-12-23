@@ -41,7 +41,6 @@ Route::get('/migration', function () {
     Artisan::call('db:seed');
 });
 
-
 Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/shop', [ProductController::class, 'index']);

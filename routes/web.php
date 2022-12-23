@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 Route::get('/migration', function () {
-    Artisan::call('migrate:fresh');
+    Artisan::call('migrate');
     Artisan::call('db:seed');
 });
 
